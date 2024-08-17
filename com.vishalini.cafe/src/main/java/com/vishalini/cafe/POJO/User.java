@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -18,6 +19,8 @@ import lombok.Data;
 
 // NOTE : Only during first run table will get created if we stop the pgm & run again we can't see 
 //table getting created only if we drop the table and run again table gets created 
+
+@NamedQuery(name="User.findByEmailId", query="select u from User u where u.email=:email")
 
 @Data
 @Entity
@@ -50,4 +53,7 @@ public class User implements Serializable {
 	
 	@Column(name="role")
 	private String role;
+	
+	
+	
 }
